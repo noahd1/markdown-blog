@@ -85,6 +85,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    metadown (1.0.1)
+      redcarpet
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.2)
@@ -122,6 +124,7 @@ GEM
     raindrops (0.15.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    redcarpet (3.3.3)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -198,6 +201,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  metadown
   mysql2
   rails (= 4.2.4)
   rspec-rails
