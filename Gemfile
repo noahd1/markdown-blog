@@ -32,6 +32,9 @@ gem 'unicorn'
 # Simple Rails app configuration
 gem 'figaro'
 
+# Annotate your Markdown files with metadata
+gem 'metadown'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
