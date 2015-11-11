@@ -45,7 +45,7 @@ hello world
 
     it "should throw an execption" do
       parser = MarkdownParser.new markdown
-      expect{ parser.execute }.to raise_error
+      expect{ parser.execute }.to raise_error(RuntimeError)
     end
   end
 end
