@@ -15,11 +15,6 @@ RSpec.describe MarkdownParser, type: :service do
       data = parser.execute
       expect(data.metadata).to be_empty
     end
-
-    it "should throw an execption" do
-      parser = MarkdownParser.new Struct.new(:some_attribute)
-      expect{ parser.execute }.to raise_error
-    end
   end
 
   context "markdown with metadata" do
@@ -42,6 +37,15 @@ hello world
       parser = MarkdownParser.new markdown
       data = parser.execute
       expect(data.metadata).to eq({key: "value"})
+    end
+  end
+
+  context "markdown with wrong parameter" do
+    let(:markdown) { Struct.new(:some_attribute) }
+
+    it "should throw an execption" do
+      parser = MarkdownParser.new markdown
+      expect{ parser.execute }.to raise_error
     end
   end
 end
