@@ -1,19 +1,18 @@
 require 'metadown'
 
-# Public: MarkdownParser parse metadata and html from markdown
+# MarkdownParser parse metadata and html from markdown
 class MarkdownParser
 
-  # Public: Initialize the MarkdownParser class
-  #
-  # markdown - A string which contains a yaml header and
-  #            markdown content
+  # Args:
+  # * +markdown+: A string which contains a yaml header and markdown content
   def initialize(markdown)
     @markdown = markdown
   end
 
-  # Public: Renders markdown to metadata and html
+  # Renders markdown to metadata and html
   #
-  # Returns an object with html and metadata as attributes
+  # Returns:
+  # * an object with html and metadata as attributes
   def execute
     begin
       data = Metadown.render(@markdown)
