@@ -1,20 +1,16 @@
-# Public: ArticleProvider creates a Article object from a markdown file
+# ArticleProvider creates an Article and Tags from a markdown file
 class ArticleProvider
 
-  # Public: Initialize the ArticleProvider class
-  #
-  # filename - The filename for creating a new Article object
-  #
-  # Examples
-  #
-  #   ArticleProvider.new "/path/to/markdown/fil.md"
+  # Args:
+  # * +filename+: The filename for creating a new Article object
   def initialize(filename)
     @filename = filename
   end
 
-  # Public: Creates the Article from a given filename
+  # Creates the Article from a given filename
   #
-  # Returns a new Article object
+  # Returns:
+  # * a new Article object
   def execute
     begin
       markdown = File.read(@filename)
@@ -33,13 +29,15 @@ class ArticleProvider
 
   private
 
-  # Private: Create or edit a Article object
+  # Create or edit a Article object
   #
-  # markdown - The content from a markdown file
-  # html     - The parsed markdown
-  # metadata - The metadata from a markdown file
+  # Args:
+  # * +markdown+: The content from a markdown file
+  # * +html+: The parsed markdown
+  # * +metadata+: The metadata from a markdown file
   #
-  # Returns a Article
+  # Returns:
+  # * a Article object
   def get_article(markdown, html, metadata)
     filename = File.basename(@filename, ".*")
 
@@ -56,12 +54,13 @@ class ArticleProvider
     article
   end
 
-  # Private: Get used Tags for a Article. If a use Tag not exists,
-  # it will be created
+  # Get used Tags for a Article. If a use Tag not exists, it will be created
   #
-  # metadata - The metadata from a markdown file
+  # Args:
+  # * +metadata+: The metadata from a markdown file
   #
-  # Returns used Tags
+  # Returns:
+  # * an array of Tags
   def get_tags(metadata)
     unless metadata[:tags].nil? && metadata[:tags].empty?
       tags = metadata[:tags]

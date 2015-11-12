@@ -33,6 +33,9 @@ gem 'figaro'
 # Annotate your Markdown files with metadata
 gem 'metadown'
 
+# A library that provides a plain function-call interface to the Dropbox API web endpoints.
+gem 'dropbox-sdk'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
