@@ -23,8 +23,18 @@ class ArticleProvider
       html = data.output
       metadata = data.metadata
 
-      article = get_article(markdown, html, metadata)
+      filename = File.basename(@filename, ".*")
 
+      # Create or edit article model
+      article = Article.find_or_create_by(filename: filename)
+      article.title = metadata[:title]
+      article.slug = article.title.downcase.tr(" ", "-")
+      article.markdown = markdown
+      article.content = html
+      article.author = metadata[:author]
+      article.tags = get_tags(metadata)
+  
+      article.save
       article
     rescue => e
       raise "Can't read file! #{ e.message }"
@@ -32,29 +42,6 @@ class ArticleProvider
   end
 
   private
-
-  # Private: Create or edit a Article object
-  #
-  # markdown - The content from a markdown file
-  # html     - The parsed markdown
-  # metadata - The metadata from a markdown file
-  #
-  # Returns a Article
-  def get_article(markdown, html, metadata)
-    filename = File.basename(@filename, ".*")
-
-    # Create or edit article model
-    article = Article.find_or_create_by(filename: filename)
-    article.title = metadata[:title]
-    article.slug = article.title.downcase.tr(" ", "-")
-    article.markdown = markdown
-    article.content = html
-    article.author = metadata[:author]
-    article.tags = get_tags(metadata)
-
-    article.save
-    article
-  end
 
   # Private: Get used Tags for a Article. If a use Tag not exists,
   # it will be created
