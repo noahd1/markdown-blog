@@ -40,5 +40,9 @@ bower.json
 # Ignore docker files
 /mysql
 
+
+# Ignore application.yml
+/config/application.yml
+
 # Ignore posts repo
 /posts
