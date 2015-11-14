@@ -1,6 +1,5 @@
 # ArticleProvider creates a Article object from a markdown file
 class ArticleProvider
-
   # Initialize the ArticleProvider class
   #
   # filename - The filename for creating a new Article object
