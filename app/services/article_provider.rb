@@ -39,7 +39,7 @@ class ArticleProvider
       article.tags = tags
 
      article
-    rescue Exception => e
+    rescue => e
       raise "Can't read file! #{ e.message }"
     end
   end
