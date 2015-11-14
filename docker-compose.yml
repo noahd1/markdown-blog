@@ -29,6 +29,8 @@ mysql:
   image: mysql:latest
   ports:
     - "40012:3306"
+  volumes:
+    - ./mysql:/var/lib/mysql
   environment:
     MYSQL_ROOT_PASSWORD: pw
     MYSQL_DATABASE: blog

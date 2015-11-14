@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :article do
+  factory :content do
     filename "01_filename.md"
     title Faker::Book.title
     slug { "#{title}".downcase.gsub(" ", "-") }

@@ -1,6 +1,6 @@
-class CreateArticles < ActiveRecord::Migration
+class CreateContents < ActiveRecord::Migration
   def change
-    create_table :articles do |t|
+    create_table :contents do |t|
       t.string :filename
       t.string :title
       t.string :slug
@@ -10,6 +10,6 @@ class CreateArticles < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :articles, :slug, unique: true
+    add_index :contents, :slug, unique: true
   end
 end

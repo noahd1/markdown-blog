@@ -1,16 +1,16 @@
-# ArticleProvider creates an Article and Tags from a markdown file
-class ArticleProvider
+# ContentProvider creates an Content and Tags from a markdown file
+class ContentProvider
 
   # Args:
-  # * +filename+: The filename for creating a new Article object
+  # * +filename+: The filename for creating a new Content object
   def initialize(filename)
     @filename = filename
   end
 
-  # Creates the Article from a given filename
+  # Creates the Content from a given filename
   #
   # Returns:
-  # * a new Article object
+  # * a new Content object
   def execute
     begin
       markdown = File.read(@filename)
@@ -19,9 +19,9 @@ class ArticleProvider
       html = data.output
       metadata = data.metadata
 
-      article = get_article(markdown, html, metadata)
+      content = get_content(markdown, html, metadata)
 
-      article
+      content
     rescue => e
       raise "Can't read file! #{ e.message }"
     end
@@ -29,7 +29,7 @@ class ArticleProvider
 
   private
 
-  # Create or edit a Article object
+  # Create or edit a Content object
   #
   # Args:
   # * +markdown+: The content from a markdown file
@@ -37,24 +37,24 @@ class ArticleProvider
   # * +metadata+: The metadata from a markdown file
   #
   # Returns:
-  # * a Article object
-  def get_article(markdown, html, metadata)
+  # * a Content object
+  def get_content(markdown, html, metadata)
     filename = File.basename(@filename, ".*")
 
-    # Create or edit article model
-    article = Article.find_or_create_by(filename: filename)
-    article.title = metadata[:title]
-    article.slug = article.title.downcase.tr(" ", "-")
-    article.markdown = markdown
-    article.content = html
-    article.author = metadata[:author]
-    article.tags = get_tags(metadata)
+    # Create or edit content model
+    content = Content.find_or_create_by(filename: filename)
+    content.title = metadata[:title]
+    content.slug = content.title.downcase.tr(" ", "-")
+    content.markdown = markdown
+    content.content = html
+    content.author = metadata[:author]
+    content.tags = get_tags(metadata)
 
-    article.save
-    article
+    content.save
+    content
   end
 
-  # Get used Tags for a Article. If a use Tag not exists, it will be created
+  # Get used Tags for a Content. If a use Tag not exists, it will be created
   #
   # Args:
   # * +metadata+: The metadata from a markdown file
