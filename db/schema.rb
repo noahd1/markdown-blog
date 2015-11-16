@@ -14,14 +14,15 @@
 ActiveRecord::Schema.define(version: 20151111184151) do
 
   create_table "contents", force: :cascade do |t|
-    t.string   "filename",   limit: 255
-    t.string   "title",      limit: 255
-    t.string   "slug",       limit: 255
-    t.text     "markdown",   limit: 65535
-    t.text     "content",    limit: 65535
-    t.string   "author",     limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "filename",     limit: 255
+    t.string   "title",        limit: 255
+    t.string   "content_type", limit: 255
+    t.string   "slug",         limit: 255
+    t.text     "markdown",     limit: 65535
+    t.text     "content",      limit: 65535
+    t.string   "author",       limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "contents", ["slug"], name: "index_contents_on_slug", unique: true, using: :btree

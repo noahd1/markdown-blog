@@ -37,12 +37,18 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
+#-------------------------------------------------------------------------------
+#
+#-------------------------------------------------------------------------------
+
 # Ignore docker files
 /mysql
-
 
 # Ignore application.yml
 /config/application.yml
 
-# Ignore posts repo
-/posts
+# Ignore content repo
+/content
+
+# Ignore content repo
+/last_import

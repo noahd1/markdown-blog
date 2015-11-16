@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :content do
     filename "01_filename.md"
     title Faker::Book.title
+    type "blog"
     slug { "#{title}".downcase.gsub(" ", "-") }
     markdown "hello world"
     content "<p>hello world</p>\n"

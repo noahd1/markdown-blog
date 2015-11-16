@@ -3,6 +3,7 @@ class CreateContents < ActiveRecord::Migration
     create_table :contents do |t|
       t.string :filename
       t.string :title
+      t.string :content_type
       t.string :slug
       t.text :markdown
       t.text :content

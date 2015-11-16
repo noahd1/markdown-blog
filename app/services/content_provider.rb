@@ -45,6 +45,7 @@ class ContentProvider
     content = Content.find_or_create_by(filename: filename)
     content.title = metadata[:title]
     content.slug = content.title.downcase.tr(" ", "-")
+    content.content_type = metadata[:type]
     content.markdown = markdown
     content.content = html
     content.author = metadata[:author]
